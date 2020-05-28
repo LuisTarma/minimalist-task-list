@@ -23,9 +23,9 @@ class Ui_InfoDialog(object):
         InfoDialog.setStyleSheet("\n"
 "#wInfoDialogIn\n"
 "{\n"
-" border-radius: 16px;\n"
+" border-radius: 0px;\n"
 " border: 1px solid rgba(100, 100, 100);\n"
-" background-color:  #F4F6F8;\n"
+" background-color:  #000000;\n"
 "\n"
 "}\n"
 "#tTransfers, #tNotifications\n"
@@ -207,6 +207,7 @@ class Ui_InfoDialog(object):
         sizePolicy.setHeightForWidth(self.sTabs.sizePolicy().hasHeightForWidth())
         self.sTabs.setSizePolicy(sizePolicy)
         self.sTabs.setMinimumSize(QtCore.QSize(0, 50))
+        self.sTabs.setStyleSheet("background-color: rgb(27, 38, 43);")
         self.sTabs.setObjectName("sTabs")
         self.pTransfersTab = QtWidgets.QWidget()
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
