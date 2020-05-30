@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>InfoDialog</class>
- <widget class="QDialog" name="InfoDialog">
+ <class>bodyMain</class>
+ <widget class="QDialog" name="bodyMain">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -27,44 +27,14 @@
   </property>
   <property name="styleSheet">
    <string notr="true">
-#wInfoDialogIn
+#wbodyMain
 {
  border-radius: 10px;
  background-color:  #FFFFFF;
 border: none;
 
 }
-#tTransfers, #tNotifications
-{
-  font-family: &quot;Lato&quot;;
-  font-size: 15px;
-  color: rgba(0, 0, 0, 40%);
-  padding: 0px 8px 0px 8px;
-  border: none;
-}
-#tNotifications
-{
-  padding: 0px 4px 0px 16px;
-}
 
-#bAvatar, #bState, #bMEGAheader, #bClockDown, #bClockUp, #bOQIcon, #bBusinessQuota, #bBusinessStorage
-{
-	border: none;
-}
-
-#wSeparator, #wSeparatorStats, #wSeparatorNotificationsOpts
-{
-background-color:  rgb(231, 231, 231);
-}
-
-#lTotalUsedStorage,  #lTotalUsedQuota
-{
-font-family: &quot;Lato&quot;;
-font-size: 13px;
-font-weight: normal;
-border: none;
-color: #333333;
-}
 QPushButton
 {
     padding-right: 12px;
@@ -95,7 +65,7 @@ QPushButton
     <number>0</number>
    </property>
    <item>
-    <widget class="QWidget" name="wInfoDialogIn" native="true">
+    <widget class="QWidget" name="wbodyMain" native="true">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -252,7 +222,7 @@ border: none;
                  <property name="currentIndex">
                   <number>0</number>
                  </property>
-                 <widget class="QWidget" name="pTransfersTab">
+                 <widget class="QWidget" name="first_tab">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
                     <horstretch>0</horstretch>
@@ -289,7 +259,7 @@ border: none;
                    </item>
                   </layout>
                  </widget>
-                 <widget class="QWidget" name="pNotificationsTab">
+                 <widget class="QWidget" name="second_tap">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
                     <horstretch>0</horstretch>
@@ -317,12 +287,39 @@ border: none;
                      <property name="palette">
                       <palette>
                        <active>
+                        <colorrole role="WindowText">
+                         <brush brushstyle="SolidPattern">
+                          <color alpha="255">
+                           <red>255</red>
+                           <green>255</green>
+                           <blue>255</blue>
+                          </color>
+                         </brush>
+                        </colorrole>
                         <colorrole role="Button">
                          <brush brushstyle="SolidPattern">
                           <color alpha="255">
                            <red>21</red>
                            <green>32</green>
                            <blue>43</blue>
+                          </color>
+                         </brush>
+                        </colorrole>
+                        <colorrole role="Text">
+                         <brush brushstyle="SolidPattern">
+                          <color alpha="255">
+                           <red>255</red>
+                           <green>255</green>
+                           <blue>255</blue>
+                          </color>
+                         </brush>
+                        </colorrole>
+                        <colorrole role="ButtonText">
+                         <brush brushstyle="SolidPattern">
+                          <color alpha="255">
+                           <red>255</red>
+                           <green>255</green>
+                           <blue>255</blue>
                           </color>
                          </brush>
                         </colorrole>
@@ -341,17 +338,53 @@ border: none;
                            <red>21</red>
                            <green>32</green>
                            <blue>43</blue>
+                          </color>
+                         </brush>
+                        </colorrole>
+                        <colorrole role="PlaceholderText">
+                         <brush brushstyle="NoBrush">
+                          <color alpha="128">
+                           <red>255</red>
+                           <green>255</green>
+                           <blue>255</blue>
                           </color>
                          </brush>
                         </colorrole>
                        </active>
                        <inactive>
+                        <colorrole role="WindowText">
+                         <brush brushstyle="SolidPattern">
+                          <color alpha="255">
+                           <red>255</red>
+                           <green>255</green>
+                           <blue>255</blue>
+                          </color>
+                         </brush>
+                        </colorrole>
                         <colorrole role="Button">
                          <brush brushstyle="SolidPattern">
                           <color alpha="255">
                            <red>21</red>
                            <green>32</green>
                            <blue>43</blue>
+                          </color>
+                         </brush>
+                        </colorrole>
+                        <colorrole role="Text">
+                         <brush brushstyle="SolidPattern">
+                          <color alpha="255">
+                           <red>255</red>
+                           <green>255</green>
+                           <blue>255</blue>
+                          </color>
+                         </brush>
+                        </colorrole>
+                        <colorrole role="ButtonText">
+                         <brush brushstyle="SolidPattern">
+                          <color alpha="255">
+                           <red>255</red>
+                           <green>255</green>
+                           <blue>255</blue>
                           </color>
                          </brush>
                         </colorrole>
@@ -370,17 +403,53 @@ border: none;
                            <red>21</red>
                            <green>32</green>
                            <blue>43</blue>
+                          </color>
+                         </brush>
+                        </colorrole>
+                        <colorrole role="PlaceholderText">
+                         <brush brushstyle="NoBrush">
+                          <color alpha="128">
+                           <red>255</red>
+                           <green>255</green>
+                           <blue>255</blue>
                           </color>
                          </brush>
                         </colorrole>
                        </inactive>
                        <disabled>
+                        <colorrole role="WindowText">
+                         <brush brushstyle="SolidPattern">
+                          <color alpha="255">
+                           <red>255</red>
+                           <green>255</green>
+                           <blue>255</blue>
+                          </color>
+                         </brush>
+                        </colorrole>
                         <colorrole role="Button">
                          <brush brushstyle="SolidPattern">
                           <color alpha="255">
                            <red>21</red>
                            <green>32</green>
                            <blue>43</blue>
+                          </color>
+                         </brush>
+                        </colorrole>
+                        <colorrole role="Text">
+                         <brush brushstyle="SolidPattern">
+                          <color alpha="255">
+                           <red>255</red>
+                           <green>255</green>
+                           <blue>255</blue>
+                          </color>
+                         </brush>
+                        </colorrole>
+                        <colorrole role="ButtonText">
+                         <brush brushstyle="SolidPattern">
+                          <color alpha="255">
+                           <red>255</red>
+                           <green>255</green>
+                           <blue>255</blue>
                           </color>
                          </brush>
                         </colorrole>
@@ -399,6 +468,15 @@ border: none;
                            <red>21</red>
                            <green>32</green>
                            <blue>43</blue>
+                          </color>
+                         </brush>
+                        </colorrole>
+                        <colorrole role="PlaceholderText">
+                         <brush brushstyle="NoBrush">
+                          <color alpha="128">
+                           <red>255</red>
+                           <green>255</green>
+                           <blue>255</blue>
                           </color>
                          </brush>
                         </colorrole>
@@ -410,6 +488,9 @@ border: none;
                        <family>Kalam</family>
                        <pointsize>10</pointsize>
                       </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: rgb(255, 255, 255);</string>
                      </property>
                     </widget>
                    </item>
@@ -467,5 +548,6 @@ border: none;
    </item>
   </layout>
  </widget>
+ <resources/>
  <connections/>
 </ui>

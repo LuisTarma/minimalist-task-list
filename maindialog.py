@@ -9,14 +9,14 @@ import ui
 ANCHO_W = 402
 ALTO_W = 564
 
-class Ui(QtWidgets.QDialog, ui.Ui_InfoDialog):
+class Ui(QtWidgets.QDialog, ui.Ui_bodyMain):
     def __init__(self):
         super(Ui, self).__init__()
         self.setupUi(self)
         #uic.loadUi('ui.ui',self) #old way
         self.setWindowFlags((QtCore.Qt.FramelessWindowHint) | QtCore.Qt.Popup)
         
-        # Posicionamiento
+        #---- Posicionamiento --------------------------------------------------------------------
         this = self.geometry()
         ag = QDesktopWidget().availableGeometry()
         sg = QDesktopWidget().screenGeometry()
@@ -29,7 +29,7 @@ class Ui(QtWidgets.QDialog, ui.Ui_InfoDialog):
         y = 2 * ag.height() - ALTO_PANTALLA - ALTO_W
         print(str(x)+"x"+str(y))
         self.move(x, y)
-        #Fin Posicionamiento
+        #-----------------------------------------------------------------------------------------
         
         #Evento del TextEdit
         
@@ -50,7 +50,6 @@ class Ui(QtWidgets.QDialog, ui.Ui_InfoDialog):
 
     def focusInEvent(self, a0):
         print("En foco")
-        
         return super().focusInEvent(a0)
 
     def hideEvent(self, a0):
