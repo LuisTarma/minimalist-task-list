@@ -19,13 +19,14 @@ class Ui_InfoDialog(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(InfoDialog.sizePolicy().hasHeightForWidth())
         InfoDialog.setSizePolicy(sizePolicy)
+        InfoDialog.setMaximumSize(QtCore.QSize(402, 564))
         InfoDialog.setWindowTitle("")
         InfoDialog.setStyleSheet("\n"
 "#wInfoDialogIn\n"
 "{\n"
-" border-radius: 0px;\n"
-" border: 1px solid rgba(100, 100, 100);\n"
-" background-color:  #000000;\n"
+" border-radius: 10px;\n"
+" background-color:  #FFFFFF;\n"
+"border: none;\n"
 "\n"
 "}\n"
 "#tTransfers, #tNotifications\n"
@@ -114,79 +115,6 @@ class Ui_InfoDialog(object):
         self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_6.setSpacing(0)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
-        self.wHeader = QtWidgets.QWidget(self.wHeaderframe)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.wHeader.sizePolicy().hasHeightForWidth())
-        self.wHeader.setSizePolicy(sizePolicy)
-        self.wHeader.setMinimumSize(QtCore.QSize(0, 60))
-        self.wHeader.setMaximumSize(QtCore.QSize(16777215, 60))
-        self.wHeader.setStyleSheet("")
-        self.wHeader.setObjectName("wHeader")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.wHeader)
-        self.horizontalLayout.setContentsMargins(15, -1, 13, -1)
-        self.horizontalLayout.setSpacing(10)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.bUpgrade = QtWidgets.QPushButton(self.wHeader)
-        self.bUpgrade.setMinimumSize(QtCore.QSize(0, 30))
-        self.bUpgrade.setMaximumSize(QtCore.QSize(16777215, 30))
-        self.bUpgrade.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
-        self.bUpgrade.setMouseTracking(False)
-        self.bUpgrade.setStyleSheet("#bUpgrade\n"
-"{\n"
-"font-family: Lato;\n"
-"font-size: 14px;\n"
-"border: 1px solid rgba(0, 0, 0, 5%);\n"
-"border-radius: 3px;\n"
-"color: #333333;\n"
-"padding: 3px 12px 3px 12px;\n"
-"background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"stop: 0 #ffffff, stop: 1 #fafafa);\n"
-"}\n"
-"\n"
-"#bUpgrade::hover\n"
-"{\n"
-"border: 1px solid rgba(0, 0, 0, 10%);\n"
-"}\n"
-"\n"
-"#bUpgrade::pressed\n"
-"{\n"
-"font-family: Lato;\n"
-"font-size: 14px;\n"
-"border: 1px solid rgba(0, 0, 0, 5%);\n"
-"border-radius: 3px;\n"
-"color: #333333;\n"
-"padding: 6px 12px 6px 12px;\n"
-"background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"stop: 0 #ffffff, stop: 1 #fafafa);\n"
-"}")
-        self.bUpgrade.setFlat(True)
-        self.bUpgrade.setObjectName("bUpgrade")
-        self.horizontalLayout.addWidget(self.bUpgrade)
-        self.bSettings = QtWidgets.QPushButton(self.wHeader)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Maximum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.bSettings.sizePolicy().hasHeightForWidth())
-        self.bSettings.setSizePolicy(sizePolicy)
-        self.bSettings.setMinimumSize(QtCore.QSize(24, 24))
-        self.bSettings.setMaximumSize(QtCore.QSize(24, 24))
-        self.bSettings.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.bSettings.setStyleSheet("#bSettings\n"
-"{\n"
-"border: none;\n"
-"}\n"
-"")
-        self.bSettings.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/images/more_settings.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.bSettings.setIcon(icon)
-        self.bSettings.setIconSize(QtCore.QSize(24, 24))
-        self.bSettings.setFlat(True)
-        self.bSettings.setObjectName("bSettings")
-        self.horizontalLayout.addWidget(self.bSettings)
-        self.verticalLayout_6.addWidget(self.wHeader)
         self.wActiveTransfersContainer = QtWidgets.QWidget(self.wHeaderframe)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -207,7 +135,7 @@ class Ui_InfoDialog(object):
         sizePolicy.setHeightForWidth(self.sTabs.sizePolicy().hasHeightForWidth())
         self.sTabs.setSizePolicy(sizePolicy)
         self.sTabs.setMinimumSize(QtCore.QSize(0, 50))
-        self.sTabs.setStyleSheet("background-color: rgb(27, 38, 43);")
+        self.sTabs.setStyleSheet("background-color: rgb(21, 32, 43);")
         self.sTabs.setObjectName("sTabs")
         self.pTransfersTab = QtWidgets.QWidget()
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
@@ -220,6 +148,13 @@ class Ui_InfoDialog(object):
         self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_10.setSpacing(0)
         self.verticalLayout_10.setObjectName("verticalLayout_10")
+        self.textEdit = QtWidgets.QTextEdit(self.pTransfersTab)
+        font = QtGui.QFont()
+        font.setFamily("Lemon")
+        self.textEdit.setFont(font)
+        self.textEdit.setStyleSheet("color: rgb(255, 255, 255);")
+        self.textEdit.setObjectName("textEdit")
+        self.verticalLayout_10.addWidget(self.textEdit)
         self.sTabs.addWidget(self.pTransfersTab)
         self.pNotificationsTab = QtWidgets.QWidget()
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
@@ -232,11 +167,62 @@ class Ui_InfoDialog(object):
         self.verticalLayout_11.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_11.setSpacing(0)
         self.verticalLayout_11.setObjectName("verticalLayout_11")
+        self.textEdit2 = QtWidgets.QTextEdit(self.pNotificationsTab)
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(21, 32, 43))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(21, 32, 43))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(21, 32, 43))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(21, 32, 43))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(21, 32, 43))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(21, 32, 43))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(21, 32, 43))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(21, 32, 43))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(21, 32, 43))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
+        self.textEdit2.setPalette(palette)
+        font = QtGui.QFont()
+        font.setFamily("Kalam")
+        font.setPointSize(10)
+        self.textEdit2.setFont(font)
+        self.textEdit2.setObjectName("textEdit2")
+        self.verticalLayout_11.addWidget(self.textEdit2)
         self.sTabs.addWidget(self.pNotificationsTab)
         self.verticalLayout_15.addWidget(self.sTabs)
         self.verticalLayout_6.addWidget(self.wActiveTransfersContainer)
         self.verticalLayout_5.addWidget(self.wHeaderframe)
         self.verticalLayout_wInfoDialogIn.addWidget(self.wContainerHeader)
+        self.wHeader = QtWidgets.QWidget(self.wInfoDialogIn)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.wHeader.sizePolicy().hasHeightForWidth())
+        self.wHeader.setSizePolicy(sizePolicy)
+        self.wHeader.setMinimumSize(QtCore.QSize(0, 45))
+        self.wHeader.setMaximumSize(QtCore.QSize(16777215, 60))
+        self.wHeader.setStyleSheet("")
+        self.wHeader.setObjectName("wHeader")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.wHeader)
+        self.horizontalLayout.setContentsMargins(15, -1, 13, -1)
+        self.horizontalLayout.setSpacing(10)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.verticalLayout_wInfoDialogIn.addWidget(self.wHeader)
         self.verticalLayout_4.addWidget(self.wInfoDialogIn)
 
         self.retranslateUi(InfoDialog)
@@ -244,10 +230,7 @@ class Ui_InfoDialog(object):
         QtCore.QMetaObject.connectSlotsByName(InfoDialog)
 
     def retranslateUi(self, InfoDialog):
-        _translate = QtCore.QCoreApplication.translate
-        self.bUpgrade.setText(_translate("InfoDialog", "demo boton"))
-        self.bSettings.setToolTip(_translate("InfoDialog", "Show MEGAsync options"))
-#import Resources_win_rc
+        pass
 
 
 if __name__ == "__main__":
