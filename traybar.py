@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import os
-import sys
+from sys import exit, argv
 from PyQt5 import QtGui, QtWidgets
 import maindialog
 
@@ -18,7 +17,7 @@ class SystemTrayIcon(QtWidgets.QSystemTrayIcon):
         """
 
         exit_ = menu.addAction("Exit")
-        exit_.triggered.connect(lambda: sys.exit())
+        exit_.triggered.connect(lambda: exit())
         exit_.setIcon(QtGui.QIcon("icon.png"))
 
         menu.addSeparator()
@@ -36,14 +35,14 @@ class SystemTrayIcon(QtWidgets.QSystemTrayIcon):
         if reason == self.DoubleClick:
             pass
         if reason == self.Trigger:
-            print("clickeado")
-            if self.showed:
-                print("Debe mostrarse")
-                self.showed = False
+            print("Debe mostarse: " + str(self.showed) + " Segun main: "+ str(self.ui.getShowed()))
+            if self.ui.getShowed():
+                self.ui.setShowed(False)
+                self.ui.posicionar()
                 self.ui.exec_()
             else:
-                print("Debe ocultarse")
                 self.showed = True
+                self.ui.setShowed(True)
                 self.ui.hide()
 
     def setShow(self, isShowed):
@@ -51,12 +50,12 @@ class SystemTrayIcon(QtWidgets.QSystemTrayIcon):
         self.ui = ui
 
 def main():
-    app = QtWidgets.QApplication(sys.argv)
+    app = QtWidgets.QApplication(argv)
     w = QtWidgets.QWidget()
     tray_icon = SystemTrayIcon(QtGui.QIcon("icon.png"), w)
     tray_icon.show()
     tray_icon.showMessage('MinTask', 'm')
-    sys.exit(app.exec_())
+    exit(app.exec_())
 
 if __name__ == '__main__':
     main()

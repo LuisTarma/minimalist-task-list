@@ -1,29 +1,55 @@
 # -*- coding: utf-8 -*-
 
-import os
-import sys
-from PyQt5 import QtGui, QtWidgets, uic, QtCore
-from PyQt5.QtWidgets import QDesktopWidget
+from sys import exit, argv
+from PyQt5 import QtGui, QtWidgets, QtCore
+from PyQt5.QtWidgets import QDesktopWidget, QApplication
 import ui
-#import traybar
 import database
+from configparser import ConfigParser
 
 ANCHO_W = 402
 ALTO_W = 564
+DATABASE_NAME = "notes.db"
 
 class Ui(QtWidgets.QDialog, ui.Ui_bodyMain):
     def __init__(self):
         super(Ui, self).__init__()
         self.setupUi(self)
+        self.showed = True
         #uic.loadUi('ui.ui',self) #old way
         self.setWindowFlags((QtCore.Qt.FramelessWindowHint) | QtCore.Qt.Popup)
         
-        ##### Database ###############################################################################
-        self.connection = database.create_connection("notes.db")
+        ##### Database #############################################
+        self.connection = database.create_connection(DATABASE_NAME)
         database.create_table(self.connection)
-        ##############################################################################################
+        ############################################################
 
-        ##### Posicionamiento ########################################################################
+        ##### Posicionamiento ######################################
+        self.posicionar()
+        ############################################################
+
+        ##### UI design ############################################
+        
+        ############################################################
+
+        ##### Events ############################################
+        self.btn_clipboard.clicked.connect(self.clipboard)
+        
+        ############################################################
+
+    def clipboard(self):
+        """
+        Paste clipboard content to TextEdit
+        """
+        previus_txt = self.textEdit.toPlainText()
+        clip = QApplication.clipboard().text()
+        try:
+            new_txt = previus_txt + str(clip)
+            self.textEdit.setText(new_txt)
+        except:
+            print("Cannot paste the clipboard")
+
+    def posicionar(self):
         this = self.geometry()
         ag = QDesktopWidget().availableGeometry()
         sg = QDesktopWidget().screenGeometry()
@@ -31,18 +57,11 @@ class Ui(QtWidgets.QDialog, ui.Ui_bodyMain):
         ALTO_PANTALLA = sg.height()
         #ancho_ventana = this.width() #Dont work idk why
         #alto_ventana = this.height()  #Dont work idk why
-        print("Available: " + str(ag.width())+ "x" + str(ag.height())+" Screen Geometry: "+ str(ANCHO_PANTALLA)+"x"+str(ALTO_PANTALLA) + " This: "+ str(ANCHO_W)+ "x"+str(ALTO_W))
+        #print("Available: " + str(ag.width())+ "x" + str(ag.height())+" Screen Geometry: "+ str(ANCHO_PANTALLA)+"x"+str(ALTO_PANTALLA) + " This: "+ str(ANCHO_W)+ "x"+str(ALTO_W))
         x = ag.width() - ANCHO_W
         y = 2 * ag.height() - ALTO_PANTALLA - ALTO_W
-        print(str(x)+"x"+str(y))
+        #print(str(x)+"x"+str(y))
         self.move(x, y)
-        #############################################################################################
-
-        #self.tray_icon = traybar.SystemTrayIcon(QtGui.QIcon("icon.png"), self)
-        #self.tray_icon.show()
-        #Evento del TextEdit
-        # TODO
-        #Fin del evento
 
     def mousePressEvent(self, event):
         if event.button() == QtCore.Qt.LeftButton:
@@ -65,7 +84,8 @@ class Ui(QtWidgets.QDialog, ui.Ui_bodyMain):
         return super().keyReleaseEvent(a0)
     
     def focusInEvent(self, a0):
-        print("En foco")
+        #print("En foco")
+        self.showed = False
         self.textEdit.setFocus() # Edit Text from the app start.
         sql = "SELECT * FROM notes WHERE id=1"
         cur = self.connection.cursor()
@@ -77,11 +97,17 @@ class Ui(QtWidgets.QDialog, ui.Ui_bodyMain):
         return super().focusInEvent(a0)
 
     def hideEvent(self, a0):
-        print("ocultado")
+        #print("ocultado")
         note = self.textEdit.toPlainText()
         database.updateNote(self.connection, (note, 1))
-        #self.trayicon.setShow(False, self)
+        #self.showed = True
         return super().hideEvent(a0)
+    
+    def getShowed(self):
+        return self.showed
+
+    def setShowed(self, show):
+        self.showed = show
     
     def showEvent(self, a0):
         #self.tray_icon.setShow(True, self)
@@ -89,10 +115,10 @@ class Ui(QtWidgets.QDialog, ui.Ui_bodyMain):
 
 def main():
     ##### Test ######
-    app = QtWidgets.QApplication(sys.argv)
+    app = QtWidgets.QApplication(argv)
     Interfaz = Ui()
     Interfaz.show()
-    sys.exit(app.exec_())
+    exit(app.exec_())
 
 if __name__ == '__main__':
     main()
