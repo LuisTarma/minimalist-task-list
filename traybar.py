@@ -3,6 +3,7 @@
 import os
 import sys
 from PyQt5 import QtGui, QtWidgets
+import maindialog
 
 class SystemTrayIcon(QtWidgets.QSystemTrayIcon):
     def __init__(self, icon, parent=None):
@@ -24,34 +25,33 @@ class SystemTrayIcon(QtWidgets.QSystemTrayIcon):
         self.setContextMenu(menu)
         self.activated.connect(self.onTrayIconActivated)
 
+        self.ui = maindialog.Ui()
+        self.showed = True
+
     def onTrayIconActivated(self, reason):
         """
         This function will trigger function on click or double click :param reason:  :return:
         """
-        folder = os.getcwd()+"\\"
+        #folder = os.getcwd()+"\\"
         if reason == self.DoubleClick:
             pass
         if reason == self.Trigger:
-            #comando = "python " + folder + "maindialog.py"
-            #os.system(comando)
-            import maindialog
-            dia = maindialog.Ui()
-            print("se crea")
-            dia.show()
-            dia.raise_()
+            print("clickeado")
+            if self.showed:
+                print("Debe mostrarse")
+                self.showed = False
+                self.ui.exec_()
+            else:
+                print("Debe ocultarse")
+                self.showed = True
+                self.ui.hide()
 
-    """ Function of the action menu
-    def open_notepad(self):
-        os.system('notepad')
-    """
+    def setShow(self, isShowed):
+        self.showed = isShowed
+        self.ui = ui
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
-    import maindialog
-    dia = maindialog.Ui()
-    print("se crea")
-    dia.show()
-    dia.raise_()
     w = QtWidgets.QWidget()
     tray_icon = SystemTrayIcon(QtGui.QIcon("icon.png"), w)
     tray_icon.show()

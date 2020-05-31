@@ -84,6 +84,9 @@ QPushButton
        <height>564</height>
       </size>
      </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(21, 32, 43);</string>
+     </property>
      <layout class="QVBoxLayout" name="verticalLayout_wInfoDialogIn">
       <property name="spacing">
        <number>0</number>
@@ -249,11 +252,14 @@ border: none;
                     <widget class="QTextEdit" name="textEdit">
                      <property name="font">
                       <font>
-                       <family>Lemon</family>
+                       <family>Kalam</family>
+                       <pointsize>11</pointsize>
                       </font>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">color: rgb(255, 255, 255);</string>
+                      <string notr="true">color: rgb(255, 255, 255);
+margin: 10px;
+border:none;</string>
                      </property>
                     </widget>
                    </item>
@@ -528,7 +534,7 @@ border: none;
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">border: none;</string>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <property name="spacing">
