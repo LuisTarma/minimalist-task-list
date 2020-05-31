@@ -47,8 +47,7 @@ class SystemTrayIcon(QtWidgets.QSystemTrayIcon):
 
     def setShow(self, isShowed):
         self.showed = isShowed
-        self.ui = ui
-
+        
 def main():
     app = QtWidgets.QApplication(argv)
     w = QtWidgets.QWidget()

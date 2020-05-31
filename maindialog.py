@@ -41,13 +41,19 @@ class Ui(QtWidgets.QDialog, ui.Ui_bodyMain):
         """
         Paste clipboard content to TextEdit
         """
-        previus_txt = self.textEdit.toPlainText()
-        clip = QApplication.clipboard().text()
+        #previus_txt = self.textEdit.toPlainText()      #Ridiculus
+        clip = QApplication.clipboard().text()          #Capture clipboard
+        cursor = self.textEdit.textCursor()             #Get the cursor "I"
         try:
-            new_txt = previus_txt + str(clip)
-            self.textEdit.setText(new_txt)
+            new_txt = str(clip)
+            #self.textEdit.setText(new_txt)             #Dont work
+            cursor.insertText(new_txt)
         except:
             print("Cannot paste the clipboard")
+        self.textEdit.setFocus()
+        cursor.setPosition(5, 0)
+        cursor.movePosition(11,0,2)
+        self.textEdit.setTextCursor(cursor)
 
     def posicionar(self):
         this = self.geometry()
@@ -81,10 +87,11 @@ class Ui(QtWidgets.QDialog, ui.Ui_bodyMain):
         """
         On any key pressed
         """
+        #self.textEdit.textCursor().setPosition(2)
         return super().keyReleaseEvent(a0)
     
     def focusInEvent(self, a0):
-        #print("En foco")
+        self.cursor = self.textEdit.textCursor()
         self.showed = False
         self.textEdit.setFocus() # Edit Text from the app start.
         sql = "SELECT * FROM notes WHERE id=1"
@@ -93,7 +100,16 @@ class Ui(QtWidgets.QDialog, ui.Ui_bodyMain):
         rows = cur.fetchall()
         for row in rows:
             print(row)
-            self.textEdit.setText(row[1])
+            self.cursor.insertText(row[1])
+            #self.textEdit.setText(row[1]) # Using the cursor cannot use "setText" normally idk why
+        self.textEdit.setFocus() # Edit Text from the app start.s
+        print("Cursor position: " + str(self.textEdit.textCursor().anchor()))
+        #self.textEdit.textCursor().setPosition(12, 0)      #This dont work
+        #self.textEdit.textCursor().movePosition(11, 0, 1)  #This dont work
+        self.cursor.setPosition(5, 0)
+        self.cursor.movePosition(11,0,2)
+        self.textEdit.setTextCursor(self.cursor)
+        print("Cursor position: " + str(self.textEdit.textCursor().anchor()))
         return super().focusInEvent(a0)
 
     def hideEvent(self, a0):
