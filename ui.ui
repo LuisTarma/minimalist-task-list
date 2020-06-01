@@ -11,16 +11,10 @@
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
-  </property>
-  <property name="maximumSize">
-   <size>
-    <width>402</width>
-    <height>564</height>
-   </size>
   </property>
   <property name="windowTitle">
    <string/>
@@ -67,18 +61,12 @@ QPushButton
    <item>
     <widget class="QWidget" name="wbodyMain" native="true">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
      <property name="minimumSize">
-      <size>
-       <width>402</width>
-       <height>564</height>
-      </size>
-     </property>
-     <property name="maximumSize">
       <size>
        <width>402</width>
        <height>564</height>
@@ -142,7 +130,7 @@ background-color: rgb(0,0,0);
          <item>
           <widget class="QFrame" name="wHeaderframe">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
@@ -178,7 +166,7 @@ border: none;
             <item>
              <widget class="QWidget" name="wActiveTransfersContainer" native="true">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
@@ -211,7 +199,7 @@ border: none;
                <item>
                 <widget class="QStackedWidget" name="sTabs">
                  <property name="sizePolicy">
-                  <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
@@ -232,7 +220,7 @@ background-color: rgb(0, 0, 0);</string>
                  </property>
                  <widget class="QWidget" name="first_tab">
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
@@ -255,6 +243,9 @@ background-color: rgb(0, 0, 0);</string>
                    </property>
                    <item>
                     <widget class="QTextEdit" name="textEdit">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
                      <property name="font">
                       <font>
                        <family>Geometr212 BkCn BT</family>
@@ -272,7 +263,7 @@ border:none;</string>
                  </widget>
                  <widget class="QWidget" name="second_tap">
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
@@ -524,7 +515,7 @@ border:none;</string>
       <item>
        <widget class="QWidget" name="wHeader" native="true">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -562,9 +553,9 @@ background-color: rgb(0, 0, 0);</string>
           <number>2</number>
          </property>
          <item>
-          <widget class="QPushButton" name="pushButton_4">
+          <widget class="QPushButton" name="btn_expand">
            <property name="cursor">
-            <cursorShape>WaitCursor</cursorShape>
+            <cursorShape>ArrowCursor</cursorShape>
            </property>
            <property name="focusPolicy">
             <enum>Qt::WheelFocus</enum>
@@ -574,6 +565,47 @@ background-color: rgb(0, 0, 0);</string>
            </property>
            <property name="text">
             <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>img/btn_expand.png</normaloff>
+             <normalon>img/btn_expand.png</normalon>img/btn_expand.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_setvisible">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>img/fixed.png</normaloff>img/fixed.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
            </property>
           </widget>
          </item>

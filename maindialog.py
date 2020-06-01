@@ -34,8 +34,26 @@ class Ui(QtWidgets.QDialog, ui.Ui_bodyMain):
 
         ##### Events ############################################
         self.btn_clipboard.clicked.connect(self.clipboard)
-        
+        self.btn_expand.clicked.connect(self.expand)
+        self.btn_setvisible.clicked.connect(self.AlwaysVisible)
         ############################################################
+
+    def expand(self):
+        """
+        Expand window size to all screen
+        """
+        if self.geometry().width() <= ANCHO_W:
+            self.wbodyMain.resize(self.ANCHO_PANTALLA, self.ALTO_PANTALLA)
+            self.resize(self.ANCHO_PANTALLA, self.ALTO_PANTALLA)
+            self.move(0,0)
+        else:
+            self.wbodyMain.resize(ANCHO_W, ALTO_W)
+            self.resize(ANCHO_W, ALTO_W)
+            self.move(self.x, self.y)
+
+    def AlwaysVisible(self):
+        print("Activando siempre visible...")
+        self.setWindowFlag(QtCore.Qt.WindowStaysOnTopHint)
 
     def clipboard(self):
         """
@@ -56,18 +74,18 @@ class Ui(QtWidgets.QDialog, ui.Ui_bodyMain):
         self.textEdit.setTextCursor(cursor)
 
     def posicionar(self):
-        this = self.geometry()
-        ag = QDesktopWidget().availableGeometry()
-        sg = QDesktopWidget().screenGeometry()
-        ANCHO_PANTALLA = sg.width()
-        ALTO_PANTALLA = sg.height()
+        #this = self.geometry()
+        self.ag = QDesktopWidget().availableGeometry()
+        self.sg = QDesktopWidget().screenGeometry()
+        self.ANCHO_PANTALLA = self.ag.width()
+        self.ALTO_PANTALLA = self.ag.height()
         #ancho_ventana = this.width() #Dont work idk why
         #alto_ventana = this.height()  #Dont work idk why
         #print("Available: " + str(ag.width())+ "x" + str(ag.height())+" Screen Geometry: "+ str(ANCHO_PANTALLA)+"x"+str(ALTO_PANTALLA) + " This: "+ str(ANCHO_W)+ "x"+str(ALTO_W))
-        x = ag.width() - ANCHO_W
-        y = 2 * ag.height() - ALTO_PANTALLA - ALTO_W
+        self.x = self.ANCHO_PANTALLA - ANCHO_W
+        self.y = 2 * self.ALTO_PANTALLA - self.sg.height() - ALTO_W
         #print(str(x)+"x"+str(y))
-        self.move(x, y)
+        self.move(self.x, self.y)
 
     def mousePressEvent(self, event):
         if event.button() == QtCore.Qt.LeftButton:
