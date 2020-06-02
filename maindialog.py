@@ -52,8 +52,12 @@ class Ui(QtWidgets.QDialog, ui.Ui_bodyMain):
             self.move(self.x, self.y)
 
     def AlwaysVisible(self):
+        """
+        TODO: Windows would keep fixed on the top if lost the focus
+        """
         print("Activando siempre visible...")
         self.setWindowFlag(QtCore.Qt.WindowStaysOnTopHint)
+        self.setWindowFlag(QtCore.Qt.Window)
 
     def clipboard(self):
         """
